@@ -1,0 +1,50 @@
+.section {
+  padding-top: 70px;
+}
+.section .img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-height: 800px;
+}
+.section .c-wrapper {
+  width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section .c-wrapper .keys {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  gap: 10px;
+}
+.section .c-wrapper .keys .key {
+  border: 4px solid black;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  width: 100px;
+  transition: all 1s;
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 5px black;
+}
+.section .c-wrapper .keys .key .word {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 26px;
+  color: darkcyan;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.section .c-wrapper .keys .key .sound {
+  color: darkcyan;
+}
+.section .c-wrapper .keys .key.playing {
+  transform: scale(1.1);
+  border-color: darkcyan;
+  box-shadow: 0 0 10px darkcyan;
+}/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Drum Kit</title>
+    <link rel="stylesheet" href="/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+   
+</head>
+<body>
+    <div class="section">
+        <img class="img" src="/dazai.jpg" alt="">
+        <div class="c-wrapper">
+            <div class="keys">
+                <div data-key="79" class="key">
+                    <kbd class="word">O</kbd>
+                    <span class="sound">Atmospharischer</span>
+                </div>
+                <div data-key="83" class="key">
+                    <kbd class="word">S</kbd>
+                    <span class="sound">Attack</span>
+                </div>
+                <div data-key="67" class="key">
+                    <kbd class="word">C</kbd>
+                    <span class="sound">Clean Trap</span>
+                </div>
+                <div data-key="65" class="key">
+                    <kbd class="word">A</kbd>
+                    <span class="sound">Crying Strings</span>
+                </div>
+                <div data-key="82" class="key">
+                    <kbd class="word">R</kbd>
+                    <span class="sound">Falling</span>
+                </div>
+                <div data-key="87" class="key">
+                    <kbd class="word">W</kbd>
+                    <span class="sound">Fat Kick</span>
+                </div>
+                <div data-key="222" class="key">
+                    <kbd class="word">İ</kbd>
+                    <span class="sound">Live Hip</span>
+                </div>
+                <div data-key="76" class="key">
+                    <kbd class="word">L</kbd>
+                    <span class="sound">Mixkit Clapping</span>
+                </div>
+                <div data-key="68" class="key">
+                    <kbd class="word">D</kbd>
+                    <span class="sound">Mixkit Zipoo</span>
+                </div>
+                <div data-key="69" class="key">
+                    <kbd class="word">E</kbd>
+                    <span class="sound">Smooth Guitar</span>
+                </div>
+              
+                <audio data-key="79" src="./sounds/atmospharischer-loop-128-bpm-8972.mp3"></audio>
+                <audio data-key="83" src="./sounds/smooth-ac-guitar-loop-93bpm-137706.mp3"></audio>
+                <audio data-key="67" src="./sounds/clean-trap-loop-131bpm-136738.mp3"></audio>
+                <audio data-key="65" src="./sounds/crying-strings-144811.mp3"></audio>
+                <audio data-key="82" src="./sounds/falling-34568.mp3"></audio>
+                <audio data-key="87" src="./sounds/fat-kick-drumloop-99bpm-141016.mp3"></audio>
+                <audio data-key="222" src="./sounds/live-hip-hop-loop-81bpm-131102.mp3"></audio>
+                <audio data-key="76" src="./sounds/mixkit-clapping-slowly-479.wav"></audio>
+                <audio data-key="68" src="./sounds/mixkit-zippo-fire-close-1334.wav"></audio>
+                <audio data-key="69"  src="./sounds/mouse-squeaks-68287.mp3"></audio>
+            </div>
+        </div>
+    </div>
+    <script src="/jquery-3.6.4.slim.min.js"></script>
+    <script>
+        function playSound (e) {
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            if (!audio) return;
+            audio.currentTime= 0;
+            audio.play();
+            key.classList.add("playing");
+        }
+        function removeTransition(e) {  
+            if(e.propertyName !== 'transform') return;
+            this.classList.remove("playing");
+        }
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+        window.addEventListener("keydown", playSound)
+    </script>
+</body>
+</html>
